@@ -1,47 +1,71 @@
-<div class="app">
-  <h1>Hola Mundo</h1>
-  <p id="mensaje">Esta es mi primera aplicación web.</p>
+<!DOCTYPE html>
+<html lang="es">
 
-  <button id="botonSaludar">Presionar</button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Hola Mundo</title>
+
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+    }
+
+    .app {
+      width: 300px;
+      margin: 100px auto;
+      padding: 30px;
+      text-align: center;
+      background: white;
+      border-radius: 10px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="app">
+    <h1>Hola Mundo</h1>
+
+    <p id="mensaje">
+      Esta es mi primera aplicación web.
+    </p>
+
+    <button id="botonSaludar">
+      Presionar
+    </button>
+  </div>
+
   <script>
     document.addEventListener("DOMContentLoaded", function() {
 
-  const boton = document.getElementById("botonSaludar");
-  const mensaje = document.getElementById("mensaje");
+      const boton = document.getElementById("botonSaludar");
+      const mensaje = document.getElementById("mensaje");
 
-  boton.addEventListener("click", function() {
-    mensaje.textContent = "¡Hola! El botón funciona.";
-  });
+      boton.addEventListener("click", function() {
+        mensaje.textContent = "¡Hola! El botón funciona.";
+      });
 
-});
+    });
   </script>
 
-  <style>
-  body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f2f2f2;
-}
+</body>
 
-.app {
-  width: 300px;
-  margin: 100px auto;
-  padding: 30px;
-  text-align: center;
-  background: white;
-  border-radius: 10px;
-}
-
-h1 {
-  margin-bottom: 10px;
-}
-
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}  
-  </style>
-  
-</div>
+</html>
