@@ -1,0 +1,47 @@
+<div class="app">
+  <h1>Hola Mundo</h1>
+  <p id="mensaje">Esta es mi primera aplicación web.</p>
+
+  <button id="botonSaludar">Presionar</button>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+  const boton = document.getElementById("botonSaludar");
+  const mensaje = document.getElementById("mensaje");
+
+  boton.addEventListener("click", function() {
+    mensaje.textContent = "¡Hola! El botón funciona.";
+  });
+
+});
+  </script>
+
+  <style>
+  body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+}
+
+.app {
+  width: 300px;
+  margin: 100px auto;
+  padding: 30px;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}  
+  </style>
+  
+</div>
