@@ -1,0 +1,8 @@
+{
+  "name": "Hola Mundo",
+  "short_name": "Hola Mundo",
+  "start_url": "/pruebamobile/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff"
+}
