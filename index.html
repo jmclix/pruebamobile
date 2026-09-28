@@ -1,71 +1,118 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-  <title>Hola MundoV3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="manifest" href="manifest.json">
+    <title>Hola Mundo</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-    }
+    <!-- Manifest de la PWA -->
+    <link rel="manifest" href="manifest.json">
 
-    .app {
-      width: 300px;
-      margin: 100px auto;
-      padding: 30px;
-      text-align: center;
-      background: white;
-      border-radius: 10px;
-    }
+    <meta name="theme-color" content="#ffffff">
 
-    h1 {
-      margin-bottom: 10px;
-    }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 40px 20px;
+            background-color: white;
+        }
 
-    button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+        h1 {
+            font-size: 40px;
+        }
 
+        p {
+            font-size: 20px;
+        }
+
+        #btnInstalar {
+            display: none;
+            margin: 30px auto;
+            padding: 14px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            background-color: #222;
+            color: white;
+            cursor: pointer;
+        }
+
+        #btnInstalar:hover {
+            background-color: #444;
+        }
+    </style>
 </head>
 
 <body>
 
-  <div class="app">
-    <h1>Hola Mundo V3</h1>
+    <h1>Hola Mundo</h1>
 
-    <p id="mensaje">
-      Esta es mi primera aplicación web.
-    </p>
+    <p>Esta es una aplicación web progresiva.</p>
 
-    <button id="botonSaludar">
-      Presionar
+    <button id="btnInstalar">
+        📱 Instalar aplicación
     </button>
-  </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
 
-      const boton = document.getElementById("botonSaludar");
-      const mensaje = document.getElementById("mensaje");
+    <script>
 
-      boton.addEventListener("click", function() {
-        mensaje.textContent = "¡Hola! El botón funciona.";
-      });
+        // Guardamos el evento que permite instalar la PWA
+        let eventoInstalacion;
 
-    });
-  </script>
+        const botonInstalar = document.getElementById("btnInstalar");
+
+        window.addEventListener("beforeinstallprompt", function(evento) {
+
+            // Evitamos que el navegador muestre automáticamente
+            evento.preventDefault();
+
+            // Guardamos el evento para utilizarlo cuando
+            // el usuario presione el botón
+            eventoInstalacion = evento;
+
+            // Mostramos el botón
+            botonInstalar.style.display = "block";
+        });
+
+
+        // Cuando el usuario presiona "Instalar"
+        botonInstalar.addEventListener("click", async function() {
+
+            if (!eventoInstalacion) {
+                return;
+            }
+
+            // Mostramos el cuadro de instalación
+            eventoInstalacion.prompt();
+
+            // Esperamos la respuesta del usuario
+            const resultado = await eventoInstalacion.userChoice;
+
+            console.log("Resultado de instalación:", resultado.outcome);
+
+            // Ya no necesitamos el evento
+            eventoInstalacion = null;
+
+            // Ocultamos el botón
+            botonInstalar.style.display = "none";
+        });
+
+
+        // Detectamos cuando la aplicación fue instalada
+        window.addEventListener("appinstalled", function() {
+
+            console.log("La PWA fue instalada");
+
+            botonInstalar.style.display = "none";
+        });
+
+    </script>
 
 </body>
-
 </html>
+```
